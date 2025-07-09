@@ -1,0 +1,35 @@
+trigger:
+  branches:
+   include:
+     - main  # Your main/default branch
+     - releases/* # Example for release branches
+     - gh-readonly-queue/main/* # **Crucial for the merge queue**
+     - gh-readonly-queue/releases/* # Include any other base branches where the merge queue is active
+
+pool:
+  vmImage: 'ubuntu-latest' # Or your preferred agent image
+
+stages:
+- stage: BuildAndTest
+  displayName: 'Build and Test'
+  jobs:
+  - job: BuildAndTestJob
+    displayName: 'Build and Test Job'
+    steps:
+    - checkout: self
+      fetchDepth: 0 # Important for some Git operations, ensure you get all history if needed.
+
+    - script: |
+        echo "Building the project..."
+        # Add your build commands here, e.g., dotnet build, npm install, etc.
+      displayName: 'Run Build'
+
+    - script: |
+        echo "Running tests..."
+        # Add your test commands here, e.g., dotnet test, npm test, etc.
+      displayName: 'Run Tests'
+
+
+
+   # Add other tasks like linting, security scanning, artifact publishing, etc.
+ 
