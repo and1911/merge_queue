@@ -7,7 +7,7 @@ trigger:
      - gh-readonly-queue/releases/* # Include any other base branches where the merge queue is active
 
 pool:
-  vmImage: 'ubuntu-latest' # Or your preferred agent image
+  name: Default # Or your preferred agent image
 
 stages:
 - stage: BuildAndTest
