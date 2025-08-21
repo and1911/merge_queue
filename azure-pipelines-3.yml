@@ -1,0 +1,36 @@
+# schedules:
+# - cron: '0/5 * * * *'
+#   displayName: Every five minutes
+#   branches:
+#     include:
+#     - main
+#   always: true
+trigger: none
+
+stages:
+- stage: A
+  dependsOn: []
+  jobs:
+    - job: A
+      steps:
+        - script: |
+            echo "Trigger Subpipeline c"
+            
+
+- stage: B
+  dependsOn: []
+  jobs:
+    - job: B
+      steps:
+        - script: |
+            echo "Trigger Subpipeline c"
+            
+
+- stage: C
+  dependsOn: []
+  jobs:
+    - job: C
+      steps:
+        - script: |
+            echo "Trigger Subpipeline c"
+
