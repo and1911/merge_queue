@@ -1,0 +1,16 @@
+trigger: none
+
+resources:
+  pipelines:
+    - pipeline: BOrchestration
+      source: Test123
+      trigger:
+        stages:
+          - B
+stages:
+  - stage: CheckPreviousRun
+    displayName: 'Check if Same Artifact Version is Running'
+    jobs:
+      - job: CheckRunningJob
+        steps:
+          - script: echo Hello, world!
